@@ -3,7 +3,7 @@ Imports System
 Imports System.Collections.Generic
 Imports System.Linq
 
-Namespace WindowsFormsApp3
+Namespace WinForms_Dashboard_Drill_Down
 	Public Class DataRow
 		Public Shared Function GetData() As List(Of DataRow)
 			Dim data As New List(Of DataRow)()

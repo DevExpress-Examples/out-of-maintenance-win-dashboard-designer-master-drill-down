@@ -1,14 +1,23 @@
-﻿using DevExpress.DashboardCommon;
+﻿using System;
+using DevExpress.DashboardCommon;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp3 {
-    public partial class Form1 : Form {
+namespace WinForms_Dashboard_Drill_Down {
+    public partial class Form1: Form {
         public Form1() {
             InitializeComponent();
+            dashboardDesigner1.CreateRibbon();
+            dashboardDesigner1.AsyncMode = true;
             dashboardDesigner1.AsyncDataLoading += (sender, e) => {
                 e.Data = DataRow.GetData();
             };
-
             Dashboard dashboard = new Dashboard();
             DashboardObjectDataSource ds = new DashboardObjectDataSource(new object());
             dashboard.DataSources.Add(ds);
@@ -31,7 +40,7 @@ namespace WindowsFormsApp3 {
 
             dashboardDesigner1.Dashboard = dashboard;
 
-            new MasterDrillDownModule(dashboardDesigner1);
+            new MasterDrillDownModule(dashboardDesigner1);      
         }
     }
 }

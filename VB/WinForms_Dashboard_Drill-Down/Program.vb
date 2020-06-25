@@ -5,7 +5,7 @@ Imports System.Linq
 Imports System.Threading.Tasks
 Imports System.Windows.Forms
 
-Namespace WindowsFormsApp3
+Namespace WinForms_Dashboard_Drill_Down
 	Friend NotInheritable Class Program
 		''' <summary>
 		''' The main entry point for the application.

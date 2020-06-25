@@ -2,7 +2,7 @@
 Imports DevExpress.DashboardCommon
 Imports System
 
-Namespace WindowsFormsApp3
+Namespace WinForms_Dashboard_Drill_Down
 	Public Module CustomPropertyExtensions
 		<System.Runtime.CompilerServices.Extension>
 		Public Function GetValue(Of T As Structure)(ByVal [property] As CustomProperties, ByVal name As String) As T

@@ -5,11 +5,10 @@ using DevExpress.XtraBars.Ribbon;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WindowsFormsApp3 {
+namespace WinForms_Dashboard_Drill_Down {
     public class MasterDrillDownModule {
         static string MFDPropertyName = "MasterDrillDown";
         static string IgnoreMFDPropertyName = "IgnoreMasterDrillDown";
-        static string PageGroup = "Interactivity";
 
         readonly DashboardDesigner designer;
         readonly RibbonControl ribbon;
@@ -23,7 +22,7 @@ namespace WindowsFormsApp3 {
             designer.DashboardItemSelected += OnDashboardItemSelected;
             designer.DashboardCustomPropertyChanged += OnCustomPropertyChanged;
 
-            ribbon = (RibbonControl)designer.MenuManager;
+            ribbon = designer.Ribbon;
             CreateBarItems(DashboardBarItemCategory.ChartTools, DashboardBarItemCategory.GridTools);
         }
         void CreateBarItems(params DashboardBarItemCategory[] categories) {
@@ -36,7 +35,11 @@ namespace WindowsFormsApp3 {
 
             foreach(DashboardBarItemCategory category in categories) {
                 RibbonPage page = ribbon.GetDashboardRibbonPage(category, DashboardRibbonPage.Data);
-                RibbonPageGroup group = page.Groups.First(g => g.Text == PageGroup);
+                RibbonPageGroup group = page.GetGroupByName("Drill-Down");
+                if(group == null) {
+                    group = new RibbonPageGroup("Drill-Down") { Name = "Drill-Down" };
+                    page.Groups.Add(group);
+                }
                 group.ItemLinks.Add(mfdBarItem);
                 group.ItemLinks.Add(ignoreMfdBarItem);
             }
@@ -76,15 +79,19 @@ namespace WindowsFormsApp3 {
             var newValue = !GetCustomPropertyValue(designer.SelectedDashboardItem?.ComponentName, MFDPropertyName);
             designer.AddToHistory(new CustomPropertyHistoryItem(designer.SelectedDashboardItem, MFDPropertyName, newValue.ToString(), string.Format("{0} Changed", MFDPropertyName)));
         }
+
         void OnIgnoreMFDBarItemClick(object sender, ItemClickEventArgs e) {
             var newValue = !GetCustomPropertyValue(designer.SelectedDashboardItem?.ComponentName, IgnoreMFDPropertyName);
             designer.AddToHistory(new CustomPropertyHistoryItem(designer.SelectedDashboardItem, IgnoreMFDPropertyName, newValue.ToString(), string.Format("{0} Changed", IgnoreMFDPropertyName)));
         }
+
         void UpdateMasterDrillDownBarItem() {
             mfdBarItem.Checked = GetCustomPropertyValue(designer.SelectedDashboardItem?.ComponentName, MFDPropertyName);
+            ignoreMfdBarItem.Enabled = !mfdBarItem.Checked;
         }
         void UpdateIgnoreMasterDrillDownBarItem() {
             ignoreMfdBarItem.Checked = GetCustomPropertyValue(designer.SelectedDashboardItem?.ComponentName, IgnoreMFDPropertyName);
+            mfdBarItem.Enabled = !ignoreMfdBarItem.Checked;
         }
         bool GetCustomPropertyValue(string itemName, string propertyName) {
             DashboardItem dashboardItem = designer.Dashboard.Items[itemName];

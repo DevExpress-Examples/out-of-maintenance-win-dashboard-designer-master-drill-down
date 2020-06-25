@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WindowsFormsApp3 {
+namespace WinForms_Dashboard_Drill_Down {
     public class DataRow {
         public static List<DataRow> GetData() {
             List<DataRow> data = new List<DataRow>();

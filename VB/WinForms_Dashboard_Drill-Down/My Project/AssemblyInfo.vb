@@ -6,11 +6,11 @@ Imports System.Runtime.InteropServices
 ' General Information about an assembly is controlled through the following
 ' set of attributes. Change these attribute values to modify the information
 ' associated with an assembly.
-<Assembly: AssemblyTitle("WindowsFormsApp3")>
+<Assembly: AssemblyTitle("WinForms_Dashboard_Drill-Down")>
 <Assembly: AssemblyDescription("")>
 <Assembly: AssemblyConfiguration("")>
 <Assembly: AssemblyCompany("")>
-<Assembly: AssemblyProduct("WindowsFormsApp3")>
+<Assembly: AssemblyProduct("WinForms_Dashboard_Drill-Down")>
 <Assembly: AssemblyCopyright("Copyright ©  2020")>
 <Assembly: AssemblyTrademark("")>
 <Assembly: AssemblyCulture("")>
@@ -21,7 +21,7 @@ Imports System.Runtime.InteropServices
 <Assembly: ComVisible(False)>
 
 ' The following GUID is for the ID of the typelib if this project is exposed to COM
-<Assembly: Guid("7e77c718-751d-4401-8b31-aca5e8cea264")>
+<Assembly: Guid("3071fc03-6861-48a7-9e2d-3c9224782f42")>
 
 ' Version information for an assembly consists of the following four values:
 '

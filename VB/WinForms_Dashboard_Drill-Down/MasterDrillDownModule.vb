@@ -6,11 +6,10 @@ Imports DevExpress.XtraBars.Ribbon
 Imports System.Collections.Generic
 Imports System.Linq
 
-Namespace WindowsFormsApp3
+Namespace WinForms_Dashboard_Drill_Down
 	Public Class MasterDrillDownModule
 		Private Shared MFDPropertyName As String = "MasterDrillDown"
 		Private Shared IgnoreMFDPropertyName As String = "IgnoreMasterDrillDown"
-		Private Shared PageGroup As String = "Interactivity"
 
 		Private ReadOnly designer As DashboardDesigner
 		Private ReadOnly ribbon As RibbonControl
@@ -24,7 +23,7 @@ Namespace WindowsFormsApp3
 			AddHandler designer.DashboardItemSelected, AddressOf OnDashboardItemSelected
 			AddHandler designer.DashboardCustomPropertyChanged, AddressOf OnCustomPropertyChanged
 
-			ribbon = CType(designer.MenuManager, RibbonControl)
+			ribbon = designer.Ribbon
 			CreateBarItems(DashboardBarItemCategory.ChartTools, DashboardBarItemCategory.GridTools)
 		End Sub
 		Private Sub CreateBarItems(ParamArray ByVal categories() As DashboardBarItemCategory)
@@ -37,7 +36,11 @@ Namespace WindowsFormsApp3
 
 			For Each category As DashboardBarItemCategory In categories
 				Dim page As RibbonPage = ribbon.GetDashboardRibbonPage(category, DashboardRibbonPage.Data)
-				Dim group As RibbonPageGroup = page.Groups.First(Function(g) g.Text = PageGroup)
+				Dim group As RibbonPageGroup = page.GetGroupByName("Drill-Down")
+				If group Is Nothing Then
+					group = New RibbonPageGroup("Drill-Down") With {.Name = "Drill-Down"}
+					page.Groups.Add(group)
+				End If
 				group.ItemLinks.Add(mfdBarItem)
 				group.ItemLinks.Add(ignoreMfdBarItem)
 			Next category
@@ -82,15 +85,19 @@ Namespace WindowsFormsApp3
 			Dim newValue = Not GetCustomPropertyValue(designer.SelectedDashboardItem?.ComponentName, MFDPropertyName)
 			designer.AddToHistory(New CustomPropertyHistoryItem(designer.SelectedDashboardItem, MFDPropertyName, newValue.ToString(), String.Format("{0} Changed", MFDPropertyName)))
 		End Sub
+
 		Private Sub OnIgnoreMFDBarItemClick(ByVal sender As Object, ByVal e As ItemClickEventArgs)
 			Dim newValue = Not GetCustomPropertyValue(designer.SelectedDashboardItem?.ComponentName, IgnoreMFDPropertyName)
 			designer.AddToHistory(New CustomPropertyHistoryItem(designer.SelectedDashboardItem, IgnoreMFDPropertyName, newValue.ToString(), String.Format("{0} Changed", IgnoreMFDPropertyName)))
 		End Sub
+
 		Private Sub UpdateMasterDrillDownBarItem()
 			mfdBarItem.Checked = GetCustomPropertyValue(designer.SelectedDashboardItem?.ComponentName, MFDPropertyName)
+			ignoreMfdBarItem.Enabled = Not mfdBarItem.Checked
 		End Sub
 		Private Sub UpdateIgnoreMasterDrillDownBarItem()
 			ignoreMfdBarItem.Checked = GetCustomPropertyValue(designer.SelectedDashboardItem?.ComponentName, IgnoreMFDPropertyName)
+			mfdBarItem.Enabled = Not ignoreMfdBarItem.Checked
 		End Sub
 		Private Function GetCustomPropertyValue(ByVal itemName As String, ByVal propertyName As String) As Boolean
 			Dim dashboardItem As DashboardItem = designer.Dashboard.Items(itemName)

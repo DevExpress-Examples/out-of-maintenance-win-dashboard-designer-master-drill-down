@@ -1,14 +1,23 @@
 ﻿Imports Microsoft.VisualBasic
+Imports System
 Imports DevExpress.DashboardCommon
+Imports System.Collections.Generic
+Imports System.ComponentModel
+Imports System.Data
+Imports System.Drawing
+Imports System.Linq
+Imports System.Text
+Imports System.Threading.Tasks
 Imports System.Windows.Forms
 
-Namespace WindowsFormsApp3
+Namespace WinForms_Dashboard_Drill_Down
 	Partial Public Class Form1
 		Inherits Form
 		Public Sub New()
 			InitializeComponent()
+			dashboardDesigner1.CreateRibbon()
+			dashboardDesigner1.AsyncMode = True
 			AddHandler dashboardDesigner1.AsyncDataLoading, Function(sender, e) AnonymousMethod1(sender, e)
-
 			Dim dashboard As New Dashboard()
 			Dim ds As New DashboardObjectDataSource(New Object())
 			dashboard.DataSources.Add(ds)
