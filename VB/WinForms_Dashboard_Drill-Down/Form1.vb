@@ -1,5 +1,4 @@
-﻿Imports Microsoft.VisualBasic
-Imports System
+﻿Imports System
 Imports DevExpress.DashboardCommon
 Imports System.Collections.Generic
 Imports System.ComponentModel
@@ -13,11 +12,14 @@ Imports System.Windows.Forms
 Namespace WinForms_Dashboard_Drill_Down
 	Partial Public Class Form1
 		Inherits Form
+
 		Public Sub New()
 			InitializeComponent()
 			dashboardDesigner1.CreateRibbon()
 			dashboardDesigner1.AsyncMode = True
-			AddHandler dashboardDesigner1.AsyncDataLoading, Function(sender, e) AnonymousMethod1(sender, e)
+			AddHandler dashboardDesigner1.AsyncDataLoading, Sub(sender, e)
+				e.Data = DataRow.GetData()
+			End Sub
 			Dim dashboard As New Dashboard()
 			Dim ds As New DashboardObjectDataSource(New Object())
 			dashboard.DataSources.Add(ds)
@@ -40,12 +42,7 @@ Namespace WinForms_Dashboard_Drill_Down
 
 			dashboardDesigner1.Dashboard = dashboard
 
-			Dim TempMasterDrillDownModule As MasterDrillDownModule = New MasterDrillDownModule(dashboardDesigner1)
+			Dim tempVar As New MasterDrillDownModule(dashboardDesigner1)
 		End Sub
-		
-		Private Function AnonymousMethod1(ByVal sender As Object, ByVal e As Object) As Boolean
-			e.Data = DataRow.GetData()
-			Return True
-		End Function
 	End Class
 End Namespace

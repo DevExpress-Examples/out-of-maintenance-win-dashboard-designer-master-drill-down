@@ -1,6 +1,4 @@
-﻿Imports Microsoft.VisualBasic
-Imports System
-Namespace WinForms_Dashboard_Drill_Down
+﻿Namespace WinForms_Dashboard_Drill_Down
 	Partial Public Class Form1
 		''' <summary>
 		''' Required designer variable.
@@ -31,7 +29,7 @@ Namespace WinForms_Dashboard_Drill_Down
 			' 
 			' dashboardDesigner1
 			' 
-			Me.dashboardDesigner1.Appearance.BackColor = System.Drawing.Color.FromArgb((CInt(Fix((CByte(240))))), (CInt(Fix((CByte(240))))), (CInt(Fix((CByte(240))))))
+			Me.dashboardDesigner1.Appearance.BackColor = System.Drawing.Color.FromArgb((CInt((CByte(240)))), (CInt((CByte(240)))), (CInt((CByte(240)))))
 			Me.dashboardDesigner1.Appearance.Options.UseBackColor = True
 			Me.dashboardDesigner1.AsyncMode = True
 			Me.dashboardDesigner1.Dock = System.Windows.Forms.DockStyle.Fill

@@ -1,5 +1,4 @@
-﻿Imports Microsoft.VisualBasic
-Imports DevExpress.DashboardCommon
+﻿Imports DevExpress.DashboardCommon
 Imports DevExpress.DashboardWin
 Imports DevExpress.XtraBars
 Imports DevExpress.XtraBars.Ribbon
@@ -52,7 +51,7 @@ Namespace WinForms_Dashboard_Drill_Down
 			SyncronizeData(e)
 		End Sub
 		Private Sub SyncronizeData(ByVal e As DrillActionEventArgs)
-			If (Not GetCustomPropertyValue(e.DashboardItemName, MFDPropertyName)) Then
+			If Not GetCustomPropertyValue(e.DashboardItemName, MFDPropertyName) Then
 				Return
 			End If
 
@@ -64,7 +63,7 @@ Namespace WinForms_Dashboard_Drill_Down
 			End If
 
 			Dim state As New DashboardState()
-			For Each item In designer.Dashboard.Items.OfType(Of DataDashboardItem)().Where(Function(i) (Not GetCustomPropertyValue(i.ComponentName, IgnoreMFDPropertyName)))
+			For Each item In designer.Dashboard.Items.OfType(Of DataDashboardItem)().Where(Function(i) Not GetCustomPropertyValue(i.ComponentName, IgnoreMFDPropertyName))
 				state.Items.Add(New DashboardItemState(item.ComponentName) With {.DrillDownValues = drillDownValues})
 			Next item
 			designer.SetDashboardState(state)
