@@ -1,8 +1,8 @@
 *Files to look at*:
 
-* [Form1.cs](./CS/WindowsFormsApp3/Form1.cs) (VB: [Form1.vb](./VB/WindowsFormsApp3/Form1.vb))
-* [MasterDrillDownModule.cs](./CS/WindowsFormsApp3/MasterDrillDownModule.cs) (VB: [MasterDrillDownModule.vb](./VB/WindowsFormsApp3/MasterDrillDownModule.vb))
-* [CustomPropertyExtensions.cs](./CS/WindowsFormsApp3/CustomPropertyExtensions.cs) (VB: [CustomPropertyExtensions.vb](./VB/WindowsFormsApp3/CustomPropertyExtensions.vb))
+* [Form1.cs](./CS/WinForms_Dashboard_Drill-Down/Form1.cs) (VB: [Form1.vb](./VB/WinForms_Dashboard_Drill-Down/Form1.vb))
+* [MasterDrillDownModule.cs](./CS/WinForms_Dashboard_Drill-Down/MasterDrillDownModule.cs) (VB: [MasterDrillDownModule.vb](./VB/WinForms_Dashboard_Drill-Down/MasterDrillDownModule.vb))
+* [CustomPropertyExtensions.cs](./CS/WinForms_Dashboard_Drill-Down/CustomPropertyExtensions.cs) (VB: [CustomPropertyExtensions.vb](./VB/WinForms_Dashboard_Drill-Down/CustomPropertyExtensions.vb))
 
 # WinForms Designer - How to Enable Master Drill-Down
 
