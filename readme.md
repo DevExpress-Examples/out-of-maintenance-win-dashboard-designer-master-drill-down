@@ -10,3 +10,9 @@ The following example shows ho to enable master drill down. When you drill down 
 
 - The **MasterDrillDown** button allows you to use the current drill-down value from any data-aware dashboard item for other dashboard items.
 - The **IgnoreMasterDrillDown** button prevents specific dashboard items from being affected by Master Drill Down.
+
+## Documentation
+
+- [Drill-Down](https://docs.devexpress.com/Dashboard/116913)
+- [Master Filtering](https://docs.devexpress.com/Dashboard/116912)
+- [Interactivity](https://docs.devexpress.com/Dashboard/116692)
