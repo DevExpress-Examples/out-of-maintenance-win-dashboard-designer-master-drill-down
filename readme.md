@@ -1,10 +1,12 @@
+<!-- default file list -->
 *Files to look at*:
 
 * [Form1.cs](./CS/WinForms_Dashboard_Drill-Down/Form1.cs) (VB: [Form1.vb](./VB/WinForms_Dashboard_Drill-Down/Form1.vb))
 * [MasterDrillDownModule.cs](./CS/WinForms_Dashboard_Drill-Down/MasterDrillDownModule.cs) (VB: [MasterDrillDownModule.vb](./VB/WinForms_Dashboard_Drill-Down/MasterDrillDownModule.vb))
 * [CustomPropertyExtensions.cs](./CS/WinForms_Dashboard_Drill-Down/CustomPropertyExtensions.cs) (VB: [CustomPropertyExtensions.vb](./VB/WinForms_Dashboard_Drill-Down/CustomPropertyExtensions.vb))
+<!-- default file list end -->
 
-# WinForms Designer - How to Enable Master Drill-Down
+# Dashboard for WinForms - How to enable master Drill-Down
 
 The following example shows ho to enable master drill down. When you drill down in the Grid item, the detail level of data displayed in the Chart applies on the fly.
 
