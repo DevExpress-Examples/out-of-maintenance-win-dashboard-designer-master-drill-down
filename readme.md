@@ -18,3 +18,7 @@ The following example shows ho to enable master drill down. When you drill down 
 - [Drill-Down](https://docs.devexpress.com/Dashboard/116913)
 - [Master Filtering](https://docs.devexpress.com/Dashboard/116912)
 - [Interactivity](https://docs.devexpress.com/Dashboard/116692)
+
+## More Examples
+
+- [How to: Synchronize Master Filter and Drill Down Actions Between Dashboards](https://github.com/DevExpress-Examples/winforms-dashboard-linked-interactivity)
